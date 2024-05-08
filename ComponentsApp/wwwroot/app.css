@@ -594,28 +594,22 @@ body {
   color: hsl(var(--foreground));
 }
 
-.btn-default {
+.btn {
   display: inline-flex;
-  height: 2.5rem;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   border-radius: calc(var(--radius) - 2px);
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: hsl(var(--primary-foreground));
   --tw-ring-offset-color: hsl(var(--background));
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
 
-.btn-default:focus-visible {
+.btn:focus-visible {
   outline: 2px solid transparent;
   outline-offset: 2px;
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
@@ -625,7 +619,86 @@ body {
   --tw-ring-offset-width: 2px;
 }
 
-.btn-default:disabled {
+.btn:disabled {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.btn-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.btn-primary:hover {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+.btn-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.btn-secondary:hover {
+  background-color: hsl(var(--secondary) / 0.8);
+}
+
+.btn-destructive {
+  background-color: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+}
+
+.btn-destructive:hover {
+  background-color: hsl(var(--destructive) / 0.9);
+}
+
+.btn-outline {
+  border-width: 1px;
+  border-color: hsl(var(--input));
+  background-color: hsl(var(--background));
+}
+
+.btn-outline:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.btn-ghost:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.btn-link {
+  color: hsl(var(--primary));
+  text-underline-offset: 4px;
+}
+
+.btn-link:hover {
+  text-decoration-line: underline;
+}
+
+.btn-sm {
+  height: 2.25rem;
+  border-radius: calc(var(--radius) - 2px);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.btn-base {
+  height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.btn-lg {
+  height: 2.75rem;
+  border-radius: calc(var(--radius) - 2px);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.btn-icon {
+  height: 2.5rem;
+  width: 2.5rem;
 }
