@@ -1,0 +1,24 @@
+@rendermode InteractiveAuto
+
+<h3 class="font-bold text-lg py-4">Demo</h3>
+
+@if (textInfo is not null)
+{
+    <p class="text-blue-500">Info: @textInfo</p>
+}
+else
+{
+    <p class="text-red-500">Info: No data</p>
+}
+
+<button class="btn btn-primary btn-base" @onclick="UpdateText">Update text</button>
+
+@code
+{
+    private string? textInfo = null;
+    private void UpdateText()
+    {
+        // This method will be called when the button is clicked
+        textInfo = "Hello, World!";
+    }
+}

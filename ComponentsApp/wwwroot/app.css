@@ -589,6 +589,10 @@ video {
   padding-inline-start: 0.75rem;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
