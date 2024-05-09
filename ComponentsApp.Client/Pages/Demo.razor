@@ -2,6 +2,11 @@
 
 <h3 class="font-bold text-lg py-4">Demo</h3>
 
+<ul>
+    <li><code>inputValue</code>: @inputValue</li>
+    <li><code>InputValue</code>: @InputValue</li>
+</ul>
+
 @if (textInfo is not null)
 {
     <p class="text-blue-500">Info: @textInfo</p>
@@ -12,13 +17,46 @@ else
 }
 
 <button class="btn btn-primary btn-base" @onclick="UpdateText">Update text</button>
+<button class="btn btn-primary btn-base" @onclick="(() => UpdateNumberText(1))">Update text</button>
+
+<p>
+    <label>
+        inputValue:
+        <input class="input" @bind="inputValue" @bind:event="oninput"/>
+    </label>
+</p>
+
+<p>
+    <label>
+        InputValue:
+        <input class="input" @bind="InputValue" @bind:event="oninput"/>
+    </label>
+</p>
+
+
+
+@for (int i = 0; i < 5; i++)
+{
+    <p class="text-blue-@(i)00">@GetNumberText(i)</p>
+}
 
 @code
 {
+    private string? inputValue;
+    private string? InputValue { get; set; }
     private string? textInfo = null;
     private void UpdateText()
     {
         // This method will be called when the button is clicked
         textInfo = "Hello, World!";
+    }
+    private void UpdateNumberText(int i)
+    {
+        // This method will be called when the button is clicked
+        textInfo = GetNumberText(i);
+    }
+    private string GetNumberText(int i)
+    {
+        return $"Number: {i}";
     }
 }
