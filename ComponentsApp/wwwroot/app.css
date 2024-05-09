@@ -579,14 +579,6 @@ video {
   display: table;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
-.w-24 {
-  width: 6rem;
-}
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -603,6 +595,10 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .px-3 {

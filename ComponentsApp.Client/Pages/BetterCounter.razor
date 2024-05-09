@@ -5,75 +5,15 @@
 
 <PageTitle>Better Counter</PageTitle>
 
+<h2 class="text-lg font-bold">Current count: @counterValue</h2>
 
-<div class="card">
-    <div class="card-header">
-        <div class="card-title">
-            @Title
-            <p role="status" class="text-xl">Current count: @StartingValue</p>
-        </div>
-    </div>
-    <div class="card-content">
-        <button class="btn btn-primary btn-base" @onclick="DecrementCountBy100">
-            -100
-        </button>
-        <button class="btn btn-primary btn-base" @onclick="DecrementCountBy10">
-            -10
-        </button>
-        <button class="btn btn-primary btn-base" @onclick="DecrementCount">
-            -1
-        </button>
-        <button class="btn btn-primary btn-base" @onclick="ResetCount">
-            0
-        </button>
-        <button class="btn btn-primary btn-base" @onclick="IncrementCount">
-            +1
-        </button>
-        <button class="btn btn-primary btn-base" @onclick="IncrementCountBy10">
-            +10
-        </button>
-        <button class="btn btn-primary btn-base" @onclick="IncrementCountBy100">
-            +100
-        </button>
-    </div>
-</div>
+<Counter OnCounterChanged="UpdateCount" />
 
 @code {
-    protected override void OnParametersSet()
+    private int counterValue = 0;
+
+    private void UpdateCount(int val)
     {
-        Title = Title ?? "Better Counter";
-    }
-    [SupplyParameterFromQuery]
-    public string? Title { get; set; }
-    [SupplyParameterFromQuery(Name = "val")]
-    public int StartingValue { get; set; }
-    // private int currentCount = 0;
-    private void DecrementCount()
-    {
-        StartingValue--;
-    }
-    private void DecrementCountBy10()
-    {
-        StartingValue -= 10;
-    }
-    private void DecrementCountBy100()
-    {
-        StartingValue -= 100;
-    }
-    private void ResetCount()
-    {
-        StartingValue = 0;
-    }
-    private void IncrementCount()
-    {
-        StartingValue++;
-    }
-    private void IncrementCountBy10()
-    {
-        StartingValue += 10;
-    }
-    private void IncrementCountBy100()
-    {
-        StartingValue += 100;
+        counterValue = val;
     }
 }
