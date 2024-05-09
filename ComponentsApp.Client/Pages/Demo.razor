@@ -2,43 +2,43 @@
 
 <h3 class="font-bold text-lg py-4">Demo</h3>
 
-<ul>
-    <li><code>inputValue</code>: @inputValue</li>
-    <li><code>InputValue</code>: @InputValue</li>
-</ul>
+<Card>
+    <div class="card-header">
+        <h3 class="card-title">
+            @if (textInfo is not null)
+            {
+                <p class="text-blue-500">Info: @textInfo</p>
+            }
+            else
+            {
+                <p class="text-red-500">Info: No data</p>
+            }
+        </h3>
+        <p class="card-description flex flex-col">
+            <code>inputValue:</code> @inputValue
+            <code>InputValue:</code> @InputValue
+        </p>
+    </div>
+    <div class="card-content">
+        <p>
+            <label>
+                inputValue:
+                <input class="input" @bind="inputValue" @bind:event="oninput"/>
+            </label>
+        </p>
 
-@if (textInfo is not null)
-{
-    <p class="text-blue-500">Info: @textInfo</p>
-}
-else
-{
-    <p class="text-red-500">Info: No data</p>
-}
-
-<button class="btn btn-primary btn-base" @onclick="UpdateText">Update text</button>
-<button class="btn btn-primary btn-base" @onclick="(() => UpdateNumberText(1))">Update text</button>
-
-<p>
-    <label>
-        inputValue:
-        <input class="input" @bind="inputValue" @bind:event="oninput"/>
-    </label>
-</p>
-
-<p>
-    <label>
-        InputValue:
-        <input class="input" @bind="InputValue" @bind:event="oninput"/>
-    </label>
-</p>
-
-
-
-@for (int i = 0; i < 5; i++)
-{
-    <p class="text-blue-@(i)00">@GetNumberText(i)</p>
-}
+        <p>
+            <label>
+                InputValue:
+                <input class="input" @bind="InputValue" @bind:event="oninput"/>
+            </label>
+        </p>
+    </div>
+    <div class="card-footer flex gap-2">
+        <button class="flex-1 btn btn-primary btn-base" @onclick="UpdateText">Update text</button>
+        <button class="flex-1 btn btn-primary btn-base" @onclick="(() => UpdateNumberText(1))">Update text</button>
+    </div>
+</Card>
 
 @code
 {

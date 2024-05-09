@@ -1,0 +1,40 @@
+<div class="card @CardClass">
+    <div class="card-header @HeaderClass">
+        <h3 class="card-title @TitleClass">
+           @CardTitle
+        </h3>
+        <p class="card-description flex flex-col @DescriptionClass">
+            @CardDescription
+        </p>
+    </div>
+    <div class="card-content @ContentClass">
+        @CardContent
+    </div>
+    <div class="card-footer @FooterClass">
+        @CardFooter
+    </div>
+</div>
+
+@code
+{
+    [Parameter]
+    public string? CardClass { get; set; }
+    [Parameter]
+    public string? HeaderClass { get; set; }
+    [Parameter]
+    public string? CardTitle { get; set; }
+    [Parameter]
+    public string? TitleClass { get; set; }
+    [Parameter]
+    public string? CardDescription { get; set; }
+    [Parameter]
+    public string? DescriptionClass { get; set; }
+    [Parameter]
+    public RenderFragment? CardContent { get; set; }
+    [Parameter]
+    public string? ContentClass { get; set; }
+    [Parameter]
+    public RenderFragment? CardFooter { get; set; }
+    [Parameter]
+    public string? FooterClass { get; set; }
+}
