@@ -4,10 +4,13 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+<Counter />
 
-@* <div class="flex gap-2">
-    <BetterCounter StartingValue="200" />
-    <BetterCounter StartingValue="300" />
-    <BetterCounter StartingValue="400" />
-</div> *@
+@code
+{
+    private int counterValue;
+    private void UpdateCounter(int val)
+    {
+        counterValue = val;
+    }
+}
