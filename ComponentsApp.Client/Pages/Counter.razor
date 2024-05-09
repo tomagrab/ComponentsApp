@@ -4,16 +4,95 @@
 
 <PageTitle>Counter</PageTitle>
 
-<button class="btn btn-primary btn-base" @onclick="IncrementCount">Click me</button>
+<h1 class="font-bold text-2xl text-slate-700 drop-shadow rounded">Counter</h1>
+
+<div class="flex flex-col items-center justify-center">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">
+                Current count: @currentCount
+            </h2>
+            <p class="card-description">
+                This component demonstrates data binding in Blazor.
+            </p>
+        </div>
+        <div class="card-content">
+            <button
+                class="btn btn-primary btn-base"
+                @onclick="DecrementByHundred"
+            >
+                -100
+            </button>
+            <button
+                class="btn btn-primary btn-base"
+                @onclick="DecrementByTen"
+            >
+                -10
+            </button>
+            <button
+                class="btn btn-primary btn-base"
+                @onclick="DecrementByOne"
+            >
+                -1
+            </button>
+            <button
+                class="btn btn-primary btn-base"
+                @onclick="ResetCount"
+            >
+                0
+            </button>
+            <button
+                class="btn btn-primary btn-base"
+                @onclick="IncrementCountByOne"
+            >
+                +1
+            </button>
+            <button
+                class="btn btn-primary btn-base"
+                @onclick="IncrementCountByTen"
+            >
+                +10
+            </button>
+            <button
+                class="btn btn-primary btn-base"
+                @onclick="IncrementCountByHundred"
+            >
+                +100
+            </button>
+        </div>
+    </div>
+</div>
 
 @code {
     [Parameter]
     public EventCallback<int> OnCounterChanged { get; set; }
     private int currentCount = 0;
-
-    private async Task IncrementCount()
+    private void IncrementCountByOne()
     {
         currentCount++;
-        await OnCounterChanged.InvokeAsync(currentCount);
+    }
+    private void IncrementCountByTen()
+    {
+        currentCount += 10;
+    }
+    private void IncrementCountByHundred()
+    {
+        currentCount += 100;
+    }
+    private void DecrementByOne()
+    {
+        currentCount--;
+    }
+    private void DecrementByTen()
+    {
+        currentCount -= 10;
+    }
+    private void DecrementByHundred()
+    {
+        currentCount -= 100;
+    }
+    private void ResetCount()
+    {
+        currentCount = 0;
     }
 }

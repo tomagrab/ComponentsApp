@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap");
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -29,6 +31,7 @@
 
 body {
   @apply bg-velsollightgrey;
+  font-family: "Inter", sans-serif;
 }
 
 .btn {

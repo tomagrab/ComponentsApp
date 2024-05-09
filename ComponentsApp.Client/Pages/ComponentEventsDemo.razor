@@ -1,0 +1,28 @@
+@rendermode InteractiveAuto
+
+<div class="card">
+    <div class="card-header">
+        <h3 id="demo-component" class="card-title">
+            Component Events Demo
+        </h3>
+        <p class="card-description">
+            This component demonstrates component events in Blazor.
+        </p>
+        <p class="card-description">
+            The value of the counter is located in the parent component, while the increment / decrement buttons are located in the child component.
+        </p>
+    </div>
+    <div class="card-content flex flex-col gap-2">
+        <p>Value: @counterValue</p>
+        <CounterWithEvent OnCounterChanged="UpdateCounter"/>
+    </div>
+</div>
+
+@code
+{
+    private int counterValue;
+    private void UpdateCounter(int val)
+    {
+        counterValue = val;
+    }
+}

@@ -1,0 +1,89 @@
+@rendermode InteractiveAuto
+
+<div class="flex gap-2">
+        <button
+            class="btn btn-primary btn-base"
+            @onclick="DecrementByHundred"
+        >
+            -100
+        </button>
+        <button
+            class="btn btn-primary btn-base"
+            @onclick="DecrementByTen"
+        >
+            -10
+        </button>
+        <button
+            class="btn btn-primary btn-base"
+            @onclick="DecrementByOne"
+        >
+            -1
+        </button>
+        <button
+            class="btn btn-primary btn-base"
+            @onclick="ResetCount"
+        >
+            0
+        </button>
+        <button
+            class="btn btn-primary btn-base"
+            @onclick="IncrementCountByOne"
+        >
+            +1
+        </button>
+        <button
+            class="btn btn-primary btn-base"
+            @onclick="IncrementCountByTen"
+        >
+            +10
+        </button>
+        <button
+            class="btn btn-primary btn-base"
+            @onclick="IncrementCountByHundred"
+        >
+            +100
+        </button>
+</div>
+
+@code
+{
+    [Parameter]
+    public EventCallback<int> OnCounterChanged { get; set; }
+    private int currentCount = 0;
+    private async Task IncrementCountByOne()
+    {
+        currentCount++;
+        await OnCounterChanged.InvokeAsync(currentCount);
+
+    }
+    private async Task IncrementCountByTen()
+    {
+        currentCount += 10;
+        await OnCounterChanged.InvokeAsync(currentCount);
+    }
+    private async Task IncrementCountByHundred()
+    {
+        currentCount += 100;
+        await OnCounterChanged.InvokeAsync(currentCount);
+    }
+    private async Task DecrementByOne()
+    {
+        currentCount--;
+        await OnCounterChanged.InvokeAsync(currentCount);
+    }
+    private async Task DecrementByTen()
+    {
+        currentCount -= 10;
+        await OnCounterChanged.InvokeAsync(currentCount);
+    }
+    private async Task DecrementByHundred()
+    {
+        currentCount -= 100;
+        await OnCounterChanged.InvokeAsync(currentCount);
+    }
+    private async Task ResetCount()
+    {
+        currentCount = 0;
+        await OnCounterChanged.InvokeAsync(currentCount);
+    }
+}

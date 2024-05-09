@@ -1,0 +1,21 @@
+@rendermode InteractiveAuto
+
+<div class="card">
+    <div class="card-header">
+        <h3 id="demo-component" class="card-title">
+            Data Binding Demo
+        </h3>
+        <p class="card-description">
+            This component demonstrates data binding in Blazor.
+        </p>
+    </div>
+    <div class="card-content flex flex-col gap-2">
+        <p>Your text: @InputValue</p>
+        <input class="input" @bind="InputValue" @bind:event="oninput"/>
+    </div>
+</div>
+
+@code
+{
+    private string? InputValue { get; set; }
+}

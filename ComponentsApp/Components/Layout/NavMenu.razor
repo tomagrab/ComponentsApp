@@ -12,7 +12,6 @@
             <nav class="flex flex-col gap-2 py-4">
                 <NavMenuLink Title="Home" Href="/" Icon="fa-solid fa-home"/>
                 <NavMenuLink Title="Counter" Href="/counter" Icon="fa-solid fa-chart-bar"/>
-                <NavMenuLink Title="Demo" Href="/demo" Icon="fa-solid fa-cube"/>
             </nav>
         </div>
     </div>
@@ -23,7 +22,7 @@
 @code {
     private bool isSidebarOpen = true;
     private string sidebarClass =>
-    $"h-screen w-40 border-r bg-velsoldarkgrey relative transition-all duration-300 ease-in-out overflow-hidden " +
+    $"h-screen border-r bg-velsoldarkgrey relative transition-all duration-300 ease-in-out overflow-hidden " +
         (isSidebarOpen ? "w-40" : "w-0");
 
     private string sidebarTogglerClass =>

@@ -2,8 +2,36 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1 class="font-bold text-2xl text-slate-700 drop-shadow rounded">Hello, world!</h1>
 
+<div class="flex flex-col gap-4">
+    <div class="text-lg">
+        <p class="flex items-center gap-2">
+            Welcome to my Blazor application <i class="fa-solid fa-smile fa-2x text-velsolblue drop-shadow"></i>
+        </p>
+        <p class="">
+            This is a simple Blazor application that demonstrates the use of components, routing, and data binding.
+        </p>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <h2 id="components-section" class="text-xl font-bold">Components</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <DataBindingDemo />
+            <ComponentEventsDemo />
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <h2 id="routing-section" class="text-xl font-bold">Routing</h2>
+        <p class="">
+            This application uses the Blazor Router to navigate between different pages.
+        </p>
+        <p class="">
+            The navigation menu is located on the left side of the screen and contains links to the Home and Counter pages.
+        </p>
+    </div>
+</div>
 
 @code
 {
