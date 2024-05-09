@@ -4,6 +4,13 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+<Counter />
 
-<Demo />
+@code
+{
+    private int counterValue;
+    private void UpdateCounter(int val)
+    {
+        counterValue = val;
+    }
+}
