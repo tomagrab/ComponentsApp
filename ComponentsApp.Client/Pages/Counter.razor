@@ -1,5 +1,6 @@
 ﻿@page "/counter"
 @rendermode InteractiveAuto
+@inject ILogger<Counter> Logger
 
 <PageTitle>Counter</PageTitle>
 
@@ -10,10 +11,25 @@
 <button class="btn btn-primary btn-base" @onclick="IncrementCount">Click me</button>
 
 @code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
+    protected override void OnParametersSet()
     {
+        Logger.LogInformation("This is from OnParameters Set");
+    }
+    protected override void OnInitialized()
+    {
+        Logger.LogInformation("Counter component initialized");
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Logger.LogInformation("Counter component rendered");
+    }
+    private int currentCount = 0;
+    private async Task IncrementCount()
+    {
+        currentCount++;
+
+        await Task.Delay(1000);
+
         currentCount++;
     }
 }

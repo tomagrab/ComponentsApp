@@ -1,9 +1,26 @@
-@* @page "/page" *@
+@page "/page"
+@inject NavigationManager NavigationManager
+@rendermode InteractiveAuto
 
-@attribute [Route("/page")]
+<h3 class="font-bold text-xl">Start</h3>
+<button class="btn btn-primary btn-base" @onclick="GoToCounter">
+    Go to Counter
+</button>
 
-<h3>Start</h3>
+<article>
+    <h4>Title</h4>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur voluptate aperiam modi, numquam minima provident voluptatem officia id, similique odit, ipsam deserunt. Cumque cum expedita eius reiciendis libero debitis temporibus? Officiis, quidem. Mollitia, minima quos animi minus dolor adipisci voluptates deserunt perspiciatis cumque quis culpa eum illo corrupti doloremque cupiditate, rerum nemo. Dolorum itaque aspernatur corporis quam repudiandae, tenetur inventore id nemo praesentium, consequatur aliquam expedita, optio provident dignissimos doloremque repellendus molestiae maiores sit non! Aliquam illo totam vel aliquid. Animi perspiciatis, neque aperiam corrupti repellat debitis hic quam ipsum et cum harum magnam asperiores ex maxime, distinctio quo, non nemo dolore dicta aspernatur ducimus temporibus provident rem numquam. Id, architecto laboriosam numquam neque obcaecati assumenda! Tempora expedita eveniet excepturi asperiores enim, veritatis, illum adipisci soluta, incidunt amet non nesciunt! Eos est repellendus alias unde a ducimus reprehenderit dolorem. Culpa architecto laboriosam harum, animi amet qui, assumenda ducimus, labore fuga perferendis nihil dolor et optio mollitia repellendus possimus! Sint voluptates veritatis placeat vero doloremque repellendus dolores amet incidunt vitae. Exercitationem aliquid ullam similique amet molestias voluptatum impedit fuga atque non? Repudiandae officia similique nemo, ipsam dolor quod eveniet quis excepturi qui aperiam veniam libero omnis itaque modi vero dolorum a molestias est facilis obcaecati. Ad dicta rem ipsum iusto, maxime tempora, esse eos nemo ipsa nulla vero animi? Perferendis accusantium accusamus a, amet iste harum similique, nam sunt veniam quaerat cumque repellendus, pariatur possimus molestias ratione velit dignissimos fugiat. Molestiae pariatur assumenda maiores repellat? Vitae, quasi! Dicta, adipisci, facilis, enim esse voluptatum voluptatem sapiente consequatur consequuntur atque laudantium asperiores necessitatibus molestiae aut illo omnis dolores at quisquam molestias consectetur illum aperiam! Ex distinctio tempora possimus error deserunt ducimus neque est nemo, nulla vel obcaecati. Dolor quis vel omnis tempore ea, nostrum labore ipsum sed accusantium fugiat laboriosam rem commodi quas eum cum ad, officia ullam dolorem hic at, consectetur incidunt? Cum quaerat similique iusto molestiae adipisci soluta eaque culpa, ab quo, quas officiis labore nisi tempore reprehenderit excepturi vero atque! Inventore ad, ut incidunt laboriosam saepe labore esse, facilis provident mollitia quasi, officia exercitationem voluptatem. Delectus iure, assumenda corrupti error labore accusamus quibusdam? Similique incidunt unde enim quam iste. Deserunt numquam voluptas magni culpa minima tempore reiciendis cum deleniti, sint impedit quo sequi ipsa, libero cumque. Dolores, omnis hic! Quibusdam quod ullam pariatur maxime ipsum, natus dolorem aliquam tenetur, possimus ex perferendis. Omnis, neque dicta exercitationem sint, voluptates vitae odit debitis sequi nemo sit, atque accusantium esse. Tenetur veniam tempora quaerat quisquam ullam corrupti a nesciunt, excepturi, omnis perspiciatis numquam vitae consequuntur totam dolor, nam autem nostrum laudantium! Maiores vero necessitatibus molestias tempora! Doloremque animi culpa in sunt est quaerat sapiente ut placeat nobis enim neque non reiciendis minus adipisci sed, quas nulla commodi ipsa quam, obcaecati dolorum earum quibusdam! Ducimus quasi accusamus deleniti, earum neque itaque? Atque exercitationem mollitia magni cum recusandae quaerat eum, quisquam placeat nulla quo sit illum natus eos facilis. Quisquam eum qui praesentium aspernatur, possimus iste dolorum nihil temporibus ducimus voluptas inventore odio exercitationem vitae.
+    </p>
+    <h5 id="subtitle">Subtitle</h5>
+    <p id="secondparagraph">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic numquam, similique animi enim voluptates voluptate quos nemo, perspiciatis velit exercitationem labore saepe laborum tempora quasi minima placeat dolor ad rem dicta. Earum blanditiis aut vero odio quia praesentium inventore temporibus facere corrupti deleniti consequatur, nostrum doloremque repudiandae. Ratione, dignissimos necessitatibus?
+    </p>
+</article>
 
 @code {
-
+    private void GoToCounter()
+    {
+        NavigationManager.NavigateTo("/counter");
+    }
 }

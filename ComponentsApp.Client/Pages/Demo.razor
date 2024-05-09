@@ -2,7 +2,7 @@
 
 <h3 class="font-bold text-lg py-4">Demo</h3>
 
-<Card>
+<div class="card">
     <div class="card-header">
         <h3 class="card-title">
             @if (textInfo is not null)
@@ -38,7 +38,7 @@
         <button class="flex-1 btn btn-primary btn-base" @onclick="UpdateText">Update text</button>
         <button class="flex-1 btn btn-primary btn-base" @onclick="(() => UpdateNumberText(1))">Update text</button>
     </div>
-</Card>
+</div>
 
 @code
 {
