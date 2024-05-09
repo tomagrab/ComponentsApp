@@ -11,6 +11,16 @@ module.exports = {
     },
     extend: {
       colors: {
+        velsolblue: "#3097b9",
+        velsolgreen: "#40bf89",
+        velsolorange: "#f3a64b",
+        velsolred: "#fd5a4b",
+        velsolyellow: "#f8dc5a",
+        velsollime: "#d9e252",
+        velsollink: "#56bfb5",
+        velsoldarkgrey: "#37474f",
+        velsolgrey: "#76838f",
+        velsollightgrey: "#bbc1c7",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

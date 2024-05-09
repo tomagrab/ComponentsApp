@@ -25,33 +25,10 @@
     --ring: 240 5.9% 10%;
     --radius: 0.5rem;
   }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
 }
 
 body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  @apply bg-velsollightgrey;
 }
 
 .btn {
@@ -59,15 +36,15 @@ body {
 }
 
 .btn-primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  @apply bg-velsolblue text-primary-foreground hover:bg-velsolblue/90;
 }
 
 .btn-secondary {
-  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  @apply bg-velsolgreen text-secondary-foreground hover:bg-velsolgreen/80;
 }
 
 .btn-destructive {
-  @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  @apply bg-velsolred text-destructive-foreground hover:bg-velsolred/90;
 }
 
 .btn-outline {
@@ -79,7 +56,7 @@ body {
 }
 
 .btn-link {
-  @apply text-primary underline-offset-4 hover:underline;
+  @apply text-velsollink underline-offset-4 hover:underline;
 }
 
 .btn-sm {

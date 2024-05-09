@@ -1,27 +1,44 @@
-﻿<aside>
-    <div class="flex items-center justify-center">
-        <a class="font-bold" href="">ComponentsApp</a>
-    </div>
+﻿@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
 
-    <div class="">
-        <nav class="">
-            <div class="">
-                <NavLink href="" Match="NavLinkMatch.All">
-                    Home
-                </NavLink>
-            </div>
-
-            <div class="">
-                <NavLink href="counter">
-                    Counter
-                </NavLink>
-            </div>
-
-            <div class="">
-                <NavLink href="weather">
-                    Weather
-                </NavLink>
-            </div>
-        </nav>
+<aside class="@sidebarClass" id="sidebar">
+    <div class="p-4 pt-8">
+        <div class="flex items-center justify-center">
+            <button class="btn btn-base btn-primary" @onclick="GoHome">
+                ComponentsApp
+            </button>
+        </div>
+        <div class="">
+            <nav class="flex flex-col gap-2 py-4">
+                <NavMenuLink Title="Home" Href="/" Icon="fa-solid fa-home"/>
+                <NavMenuLink Title="Counter" Href="/counter" Icon="fa-solid fa-chart-bar"/>
+                <NavMenuLink Title="Demo" Href="/demo" Icon="fa-solid fa-cube"/>
+            </nav>
+        </div>
     </div>
 </aside>
+
+<i class="@sidebarTogglerClass" @onclick="ToggleSidebar"></i>
+
+@code {
+    private bool isSidebarOpen = true;
+    private string sidebarClass =>
+    $"h-screen w-40 border-r bg-velsoldarkgrey relative transition-all duration-300 ease-in-out overflow-hidden " +
+        (isSidebarOpen ? "w-40" : "w-0");
+
+    private string sidebarTogglerClass =>
+        $"fa-solid fa-chevron-left text-velsolblue cursor-pointer absolute top-1/2 transition-all duration-300 ease-in-out transform " +
+            (isSidebarOpen ? "translate-x-[10.25rem]" : "translate-x-[.25rem] rotate-180");
+
+    // Logic to open and close the sidebar
+    private void ToggleSidebar()
+    {
+      isSidebarOpen = !isSidebarOpen;
+    }
+
+    public void GoHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+}
