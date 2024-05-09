@@ -579,6 +579,22 @@ video {
   display: table;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-36 {
+  width: 9rem;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -597,8 +613,13 @@ video {
   justify-content: center;
 }
 
-.gap-2 {
-  gap: 0.5rem;
+.border {
+  border-width: 1px;
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .px-3 {
