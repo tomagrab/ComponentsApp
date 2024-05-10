@@ -1,14 +1,14 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="flex">
-    <div class="">
-        <NavMenu />
-    </div>
+<div class="min-h-[100dvh] flex w-full">
+    <NavMenu />
 
-    <main class="flex-1 p-4">
-        <article class="bg-white p-4 h-[calc(100dvh-2rem)] rounded">
-            @Body
-        </article>
-    </main>
+    <div class="flex-1">
+        <main class="p-4">
+            <article class="overflow-auto h-[calc(100dvh-3rem)] w-full rounded bg-white p-4 shadow-xl">
+                @Body
+            </article>
+        </main>
+    </div>
 </div>
 

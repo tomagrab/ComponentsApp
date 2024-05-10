@@ -1,7 +1,7 @@
 ﻿@inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
-<aside class="@sidebarClass" id="sidebar">
+<aside class="h-screen border-r bg-velsoldarkgrey min-w-40" id="sidebar">
     <div class="p-4 pt-8">
         <div class="flex items-center justify-center">
             <button class="btn btn-base btn-primary" @onclick="GoHome">
@@ -12,32 +12,15 @@
             <nav class="flex flex-col gap-2 py-4">
                 <NavMenuLink Title="Home" Href="/" Icon="fa-solid fa-home"/>
                 <NavMenuLink Title="Counter" Href="/counter" Icon="fa-solid fa-chart-bar"/>
+                <NavMenuLink Title="QuickGrid" Href="/quickgrid" Icon="fa-solid fa-table"/>
             </nav>
         </div>
     </div>
 </aside>
 
-<i class="@sidebarTogglerClass" @onclick="ToggleSidebar"></i>
-
 @code {
-    private bool isSidebarOpen = true;
-    private string sidebarClass =>
-    $"h-screen border-r bg-velsoldarkgrey relative transition-all duration-300 ease-in-out overflow-hidden " +
-        (isSidebarOpen ? "w-40" : "w-0");
-
-    private string sidebarTogglerClass =>
-        $"fa-solid fa-chevron-left text-velsolblue cursor-pointer absolute top-1/2 transition-all duration-300 ease-in-out transform " +
-            (isSidebarOpen ? "translate-x-[10.25rem]" : "translate-x-[.25rem] rotate-180");
-
-    // Logic to open and close the sidebar
-    private void ToggleSidebar()
-    {
-      isSidebarOpen = !isSidebarOpen;
-    }
-
     public void GoHome()
     {
         NavigationManager.NavigateTo("/");
     }
-
 }

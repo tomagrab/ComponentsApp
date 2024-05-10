@@ -1,0 +1,122 @@
+@page "/quickgrid"
+@rendermode InteractiveServer
+
+<PageTitle>QuickGrid</PageTitle>
+
+<h1 class="font-bold text-2xl text-slate-700 drop-shadow rounded">QuickGrid</h1>
+
+<div class="flex flex-col gap-4">
+    <QuickGrid Items="@FilteredEmployees" Pagination="@pagination" class="overflow-x-auto">
+        <PropertyColumn Property="@(e => e.Id)" Sortable="true">
+            <ColumnOptions>
+                <input type="search" @bind="idFilter" @bind:event="oninput" placeholder="ID..." />
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(e => e.FirstName)" Sortable="true">
+            <ColumnOptions>
+                <input type="search" @bind="firstNameFilter" @bind:event="oninput" placeholder="First name..." />
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(e => e.LastName)" Sortable="true">
+            <ColumnOptions>
+                <input type="search" @bind="lastNameFilter" @bind:event="oninput" placeholder="Last name..." />
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(e => e.Email)" Sortable="true">
+            <ColumnOptions>
+                <input type="search" @bind="emailFilter" @bind:event="oninput" placeholder="Email..." />
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(e => e.Phone)" Sortable="true">
+            <ColumnOptions>
+                <input type="search" @bind="phoneFilter" @bind:event="oninput" placeholder="Phone..." />
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(e => e.StartDate)" Format="yyyy-MM-dd" Sortable="true">
+            <ColumnOptions>
+                <input type="search" @bind="startDateFilter" @bind:event="oninput" placeholder="Start date..." />
+            </ColumnOptions>
+        </PropertyColumn>
+    </QuickGrid>
+
+    @if (pagination.TotalItemCount.HasValue)
+    {
+        <div class="flex gap-2 items-center justify-center">
+            <div class="page-size-chooser">
+                <select class="select-trigger" @bind="@pagination.ItemsPerPage">
+                    <option class="select-item">5</option>
+                    <option class="select-item">10</option>
+                    <option class="select-item">20</option>
+                    <option class="select-item">50</option>
+                </select>
+            </div>
+            <div>
+                @for (var pageIndex = 0; pageIndex <= pagination.LastPageIndex; pageIndex++)
+                {
+                    var capturedIndex = pageIndex;
+                    <button @onclick="@(() => GoToPageAsync(capturedIndex))"
+                            class="@PageButtonClass(capturedIndex)"
+                            aria-current="@AriaCurrentValue(capturedIndex)"
+                            aria-label="Go to page @(pageIndex + 1)">
+                        @(pageIndex + 1)
+                    </button>
+                }
+            </div>
+            <div>
+                <span>Page @(pagination.CurrentPageIndex + 1) of @((pagination.TotalItemCount.Value + pagination.ItemsPerPage - 1) / pagination.ItemsPerPage)</span>
+            </div>
+        </div>
+    }
+</div>
+
+@code
+{
+    PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+    private async Task GoToPageAsync(int pageIndex)
+    {
+        await pagination.SetCurrentPageIndexAsync(pageIndex);
+    }
+    private string? PageButtonClass(int pageIndex)
+    {
+        return pagination.CurrentPageIndex == pageIndex ? "btn btn-primary btn-base" : "btn btn-outline btn-base";
+    }
+    private string? AriaCurrentValue(int pageIndex)
+    {
+        return pagination.CurrentPageIndex == pageIndex ? "page" : null;
+    }
+    private string idFilter = string.Empty;
+    private string firstNameFilter = string.Empty;
+    private string lastNameFilter = string.Empty;
+    private string emailFilter = string.Empty;
+    private string phoneFilter = string.Empty;
+    private string startDateFilter = string.Empty;
+    private record EmployeeRecord(int Id, string FirstName, string LastName, string Email, string Phone, DateOnly StartDate);
+    private IQueryable<EmployeeRecord> Employees => new List<EmployeeRecord>
+    {
+        new EmployeeRecord(1, "John", "Doe", "john.doe@example.com", "555-1234", new DateOnly(2021, 1, 1)),
+        new EmployeeRecord(2, "Jane", "Smith", "jane.smith@example.com", "555-5678", new DateOnly(2021, 2, 1)),
+        new EmployeeRecord(3, "Alice", "Johnson", "alice.johnson@example.com", "555-9012", new DateOnly(2021, 3, 1)),
+        new EmployeeRecord(4, "Bob", "Brown", "bob.brown@example.com", "555-3456", new DateOnly(2021, 4, 1)),
+        new EmployeeRecord(5, "Charlie", "Davis", "charlie.davis@example.com", "555-7890", new DateOnly(2021, 5, 1)),
+        new EmployeeRecord(6, "David", "Evans", "david.evans@example.com", "555-2345", new DateOnly(2021, 6, 1)),
+        new EmployeeRecord(7, "Ella", "Fitzgerald", "ella.fitzgerald@example.com", "555-6789", new DateOnly(2021, 7, 1)),
+        new EmployeeRecord(8, "George", "Harrison", "george.harrison@example.com", "555-4567", new DateOnly(2021, 8, 1)),
+        new EmployeeRecord(9, "Hannah", "Abbott", "hannah.abbott@example.com", "555-8912", new DateOnly(2021, 9, 1)),
+        new EmployeeRecord(10, "Ivan", "Ivanovic", "ivan.ivanovic@example.com", "555-1314", new DateOnly(2021, 10, 1)),
+        new EmployeeRecord(11, "Jessica", "Jones", "jessica.jones@example.com", "555-1516", new DateOnly(2021, 11, 1)),
+        new EmployeeRecord(12, "Kyle", "Broflovski", "kyle.broflovski@example.com", "555-1718", new DateOnly(2021, 12, 1)),
+        new EmployeeRecord(13, "Liam", "Neeson", "liam.neeson@example.com", "555-1920", new DateOnly(2022, 1, 1)),
+        new EmployeeRecord(14, "Monica", "Geller", "monica.geller@example.com", "555-2122", new DateOnly(2022, 2, 1)),
+        new EmployeeRecord(15, "Nancy", "Drew", "nancy.drew@example.com", "555-2324", new DateOnly(2022, 3, 1)),
+        new EmployeeRecord(16, "Oscar", "Wilde", "oscar.wilde@example.com", "555-2526", new DateOnly(2022, 4, 1)),
+    }.AsQueryable();
+
+    private IQueryable<EmployeeRecord> FilteredEmployees => Employees
+        .Where(e => string.IsNullOrEmpty(idFilter) || e.Id.ToString().Contains(idFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(e => string.IsNullOrEmpty(firstNameFilter) || e.FirstName.Contains(firstNameFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(e => string.IsNullOrEmpty(lastNameFilter) || e.LastName.Contains(lastNameFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(e => string.IsNullOrEmpty(emailFilter) || e.Email.Contains(emailFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(e => string.IsNullOrEmpty(phoneFilter) || e.Phone.Contains(phoneFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(e => string.IsNullOrEmpty(startDateFilter) || e.StartDate.ToString("yyyy-MM-dd").Contains(startDateFilter, StringComparison.OrdinalIgnoreCase));
+
+}

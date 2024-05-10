@@ -34,6 +34,10 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+.active {
+  @apply bg-velsolblue/90;
+}
+
 .btn {
   @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
 }
@@ -104,4 +108,36 @@ body {
 
 .input {
   @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.select-trigger {
+  @apply flex h-10 w-full items-center justify-between rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 ring-offset-2;
+}
+
+.select-icon {
+  @apply h-4 w-4 opacity-50;
+}
+
+.select-scroll-button {
+  @apply flex cursor-default items-center justify-center py-1;
+}
+
+.select-content {
+  @apply relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border shadow-md;
+}
+
+.select-label {
+  @apply py-1.5 pl-8 pr-2 text-sm font-semibold;
+}
+
+.select-item {
+  @apply relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground;
+}
+
+.select-item-indicator {
+  @apply absolute left-2 flex h-3.5 w-3.5 items-center justify-center;
+}
+
+.select-separator {
+  @apply -mx-1 my-1 h-px bg-muted;
 }
